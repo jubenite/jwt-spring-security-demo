@@ -1,0 +1,24 @@
+server:
+  port: 9082
+  contextPath: /resource-spl-2
+
+management:
+  context-path: /resource-spl-2/management
+  port: 7082
+  security:
+    enabled: false
+
+# JACKSON
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+jwt:
+  header: Authorization
+  secret: bbT3W5k8ZW6W
+  
+#logging:
+#  level:
+#    org.springframework:
+#      security: DEBUG
