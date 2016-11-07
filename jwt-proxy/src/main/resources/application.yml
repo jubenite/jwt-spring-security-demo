@@ -1,0 +1,42 @@
+server:
+  contextPath: /proxy
+  port: 9080
+  
+management:
+  context-path: /proxy/management
+  port: 7080
+  security:
+    enabled: false
+
+spring:
+    datasource:
+        url: jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/jwt-demo?useSSL=false
+        username: root
+        password: dbpass
+        initialize: false
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+    resource-spl-1:
+      path: /persons-spl-1/**
+      url: http://localhost:9081/resource-spl-1/persons-local
+    user-spl-1:
+      path: /protected-spl-1/**
+      url: http://localhost:9081/resource-spl-1/protected-local
+    resource-spl-2:
+      path: /persons-spl-2/**
+      url: http://localhost:9081/resource-spl-1/persons-remote
+    user-spl-2:
+      path: /protected-spl-2/**
+      url: http://localhost:9081/resource-spl-1/protected-remote
+
+# custom configuration
+jwt:
+  header: Authorization
+  expiration: 3600
+  secret: bbT3W5k8ZW6W
+ 
+#logging:
+#  level:
+#    org.springframework.security: DEBUG

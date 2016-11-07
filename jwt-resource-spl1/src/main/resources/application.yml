@@ -1,0 +1,28 @@
+server:
+  port: 9081
+  contextPath: /resource-spl-1
+
+management:
+  context-path: /resource-spl-1/management
+  port: 7081
+  security:
+    enabled: false
+
+# JACKSON
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+# custom configuration
+jwt:
+  header: Authorization
+  secret: bbT3W5k8ZW6W
+ 
+rest.remote.persons: http://localhost:9082/resource-spl-2/persons
+rest.remote.protected: http://localhost:9082/resource-spl-2/protected
+  
+#logging:
+#  level:
+#    org.springframework:
+#      security: DEBUG

@@ -1,0 +1,5 @@
+package org.tsystems.demojwt.proxy.model.security;
+
+public enum AuthorityName {
+    ROLE_USER, ROLE_ADMIN
+}
